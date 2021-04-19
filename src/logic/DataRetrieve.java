@@ -144,11 +144,8 @@ public class DataRetrieve {
 			counts.computeIfAbsent(actualDate, n -> counts.put(n, 0));
 			c.add(Calendar.MONTH, 1);
 		}
-		//list map content
-		listMap(counts);
 		
 		//generate CSV file
-		
 		createCSV(counts);
 	} 
 	

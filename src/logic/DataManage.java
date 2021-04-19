@@ -19,6 +19,10 @@ public class DataManage {
 	}
 	
 	public DataManage(String filename) {
+		//check dir exists or create it
+		File dir = new File("resources");
+		if(!dir.isDirectory())
+			dir.mkdir();
 		this.csvFilename = "resources/" + filename + ".csv";
 				
 	}
