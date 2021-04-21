@@ -1,0 +1,92 @@
+
+Nlogic.DataManage#escapeSpecialCharacters(Ljava/lang/String;)Ljava/lang/String;M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java" "(&"5*‰
+2M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java%
+ %(±Æ
+M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java%
+ %($
+%4java.lang.String"\java.lang.String#replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;*
+
+datajava.lang.String*
+\"*
+\"\"29replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)å
+â
+M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java% %($
+datajava.lang.String"__id*
+
+%4java.lang.Stringò
+ï
+M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java& &(
+%5java.lang.String"__concat*
+\"*
+
+datajava.lang.Stringñ
+ì
+M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java& &("
+%6java.lang.String"__concat*
+
+%5java.lang.String*
+\"ì
+ê
+M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java& &("
+escapedDatajava.lang.String"__id*
+
+%6java.lang.String*
+1*ª
+3M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java$2 $(6ﬁ€
+M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java$2 $(D
+%3boolean"4java.lang.String#contains(Ljava/lang/CharSequence;)Z*
+
+datajava.lang.String*
+'2"contains(Ljava/lang/CharSequence;)*
+2
+1*º
+4M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java$ $(ﬂ‹
+M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java$ $(.
+%2boolean"4java.lang.String#contains(Ljava/lang/CharSequence;)Z*
+
+datajava.lang.String*
+\"2"contains(Ljava/lang/CharSequence;)*
+2
+3*Ò
+5M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java# #(ùö
+M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java# #(2
+%0java.lang.String"Sjava.lang.String#replaceAll(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;*
+
+datajava.lang.String*
+\\R*
+ 20replaceAll(Ljava/lang/String;Ljava/lang/String;)ì
+ê
+M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java# #(3
+escapedDatajava.lang.String"__id*
+
+%0java.lang.Stringﬁ€
+M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java$ $(
+%1boolean"4java.lang.String#contains(Ljava/lang/CharSequence;)Z*
+
+datajava.lang.String*
+,2"contains(Ljava/lang/CharSequence;)*
+2
+4*∆
+1M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java(	 (("r
+M
+C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java( ((!
+
+escapedDatajava.lang.String:
+datajava.lang.StringB
+logic.DataManage

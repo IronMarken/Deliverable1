@@ -19,6 +19,7 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.eclipse.jgit.api.errors.GitAPIException;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -110,7 +111,10 @@ public class DataRetrieve {
 	}	
 
 
-	public static void main(String[] args) throws IOException, JSONException, ParseException {
+	public static void main(String[] args) throws GitAPIException, IOException, JSONException, ParseException {
+		
+		//remove
+		new GitBoundary("https://github.com/apache/falcon");
 		
 		String projectName = "FALCON";
 		Integer j = 0;
