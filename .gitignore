@@ -1,3 +1,6 @@
 # Exclude
 ./.scannerwork 
 ./.directory
+./repo
+./resources
+./repo
