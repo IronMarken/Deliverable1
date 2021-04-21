@@ -1,37 +1,0 @@
-
-Dlogic.DataManage#convertToCSV([Ljava/lang/String;)Ljava/lang/String;M
-C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java ("1*	
-1M
-C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java	 (ˆ
-Û
-M
-C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java	 (
-%0java.util.stream.Stream"Hjava.util.stream.Stream#of([Ljava/lang/Object;)Ljava/util/stream/Stream;*"
-java.util.stream.Stream*
-
-datajava.lang.String[]ìê
-M
-C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java	 (;
-%1java.util.stream.Stream"Sjava.util.stream.Stream#map(Ljava/util/function/Function;)Ljava/util/stream/Stream;*
-
-%0java.util.stream.Stream*
-""2"map(Ljava/util/function/Function;)˜
-Ù
-M
-C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.javaD ([ 
-%2java.util.stream.Collector"Yjava.util.stream.Collectors#joining(Ljava/lang/CharSequence;)Ljava/util/stream/Collector;*"
-java.util.stream.Collectors*
-,ß§
-M
-C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java	 (\
-%3java.lang.String"Ojava.util.stream.Stream#collect(Ljava/util/stream/Collector;)Ljava/lang/Object;*
-
-%1java.util.stream.Stream*"
- 
-%2java.util.stream.Collector2%collect(Ljava/util/stream/Collector;)"i
-M
-C/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataManage.java (]
-
-%3java.lang.String:
-datajava.lang.String[]B
-logic.DataManage

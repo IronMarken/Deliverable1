@@ -1,59 +1,0 @@
-
->logic.DataRetrieve#readAll(Ljava/io/Reader;)Ljava/lang/String;O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.java; ;("9*Á
-3O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.javaB B("k
-O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.javaB B(
-
-%4java.lang.String*«
-4O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.javaB B(ÏÌ
-O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.javaB B(
-%4java.lang.String"4java.lang.StringBuilder#toString()Ljava/lang/String;*
-
-sbjava.lang.StringBuilder2
-toString()*
-3*¿
-5O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.java@ @(ãà
-O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.java@ @(
-%3java.lang.StringBuilder":java.lang.StringBuilder#append(C)Ljava/lang/StringBuilder;*
-
-sbjava.lang.StringBuilder*
-""2	append(C)*
-7*ö
-7O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.java? ?(—”
-O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.java? ?(	
-%2int"java.io.Reader#read()I*
-
-rdjava.io.Reader2read()*
-4
-5*ö
-8O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.java= =(,š
-—
-O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.java= =(,
-sbjava.lang.StringBuilder"__id*
-
-%0java.lang.StringBuilder*
-7*‰
-9O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.java= =(+Œ‰
-O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.java= =()
-%0java.lang.StringBuilder"java.lang.StringBuilderž
-›
-O
-E/home/marco/Scrivania/GitHub/Deliverable1/src/logic/DataRetrieve.java= =(+
-%1"!java.lang.StringBuilder#<init>()V*
-
-%0java.lang.StringBuilder*
-8:
-rdjava.io.ReaderB"
-logic.DataRetrieve
