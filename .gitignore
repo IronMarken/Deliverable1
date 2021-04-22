@@ -1,5 +1,5 @@
 # Exclude
-.scannerwork/** 
-.directory
-repo/**
-resources/**
+/.scannerwork/** 
+/.directory
+/repo/**
+/resources/**
