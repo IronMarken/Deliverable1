@@ -3,7 +3,11 @@ package logic;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.SortedMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -51,5 +55,22 @@ public class DataManage {
 			LOGGER.log(Level.INFO, "File created");
 		}
 	}
+	
+	public void createCSV(SortedMap<String, Integer> map) {
+		List<String[]> dataToConvert = new ArrayList<>();
+		dataToConvert.add(new String[] {"Month", "Fixed tickets"});
+        String date;
+		Set<Map.Entry<String, Integer> > entrySet  = map.entrySet(); 
+		for(Map.Entry<String, Integer> entry: entrySet) {
+			date = entry.getKey();
+			dataToConvert.add(new String[] {Months.values()[Integer.parseInt(date.substring(5,7))-1].toString() +" "+ date.substring(0,4), entry.getValue().toString() });
+		}
+		try {
+			this.toCSV(dataToConvert);
+	
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+	}	
 	
 }

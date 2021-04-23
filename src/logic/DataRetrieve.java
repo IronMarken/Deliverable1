@@ -1,17 +1,9 @@
 package logic;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -29,56 +21,9 @@ public class DataRetrieve {
 	
 	private static final Logger LOGGER = Logger.getLogger(DataRetrieve.class.getName());
 	
-	public enum Months
-	{
-	    JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEPT, OCT, NOV, DEC;
-		
-		//Formatting output string
-		@Override
-		public String toString() {
-			String value = name();
-			return value.substring(0,1) + value.substring(1).toLowerCase(); 
-		}
-		
-	}
-	
 	public static void logInfo(String message) {
 		LOGGER.log(Level.INFO, message);
 	}
-	
-	public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
-		InputStream is = new URL(url).openStream();
-		try ( BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8)) ) {
-			String jsonText = readAll(rd);
-			return new JSONObject(jsonText);
-		 } finally {
-			 is.close();
-		 }
-	}
-	
-	private static String readAll(Reader rd) {
-		  try {
-			  StringBuilder sb = new StringBuilder();
-			  int cp;
-			  while ((cp = rd.read()) != -1) {
-				  sb.append((char) cp);
-			  }
-			  return sb.toString();
-		  }catch(IOException e) {
-			  e.printStackTrace();
-			  return null;
-		  }
-	}
-
-	public static JSONArray readJsonArrayFromUrl(String url) throws IOException, JSONException {
-	      InputStream is = new URL(url).openStream();
-	      try ( BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8)) ) {
-	         String jsonText = readAll(rd);
-	         return new JSONArray(jsonText);
-	       } finally {
-	         is.close();
-	       }
-	   }
 	
 	public static void listMap(SortedMap<String, Integer> map) {
 		Integer total = 0;
@@ -91,24 +36,6 @@ public class DataRetrieve {
 		}
 		logInfo( "total "+total);
 	}
-	
-	public static void createCSV(SortedMap<String, Integer> map) {
-		List<String[]> dataToConvert = new ArrayList<>();
-		dataToConvert.add(new String[] {"Month", "Fixed tickets"});
-        String date;
-		Set<Map.Entry<String, Integer> > entrySet  = map.entrySet(); 
-		for(Map.Entry<String, Integer> entry: entrySet) {
-			date = entry.getKey();
-			dataToConvert.add(new String[] {Months.values()[Integer.parseInt(date.substring(5,7))-1].toString() +" "+ date.substring(0,4), entry.getValue().toString() });
-		}
-		DataManage dm = new DataManage("Falcon-Process control chart");
-		try {
-			dm.toCSV(dataToConvert);
-	
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-	}	
 
 
 	public static void main(String[] args) throws GitAPIException, IOException, JSONException, ParseException {
@@ -129,7 +56,7 @@ public class DataRetrieve {
 					+ projectName +"%22AND%22resolution%22=%22fixed%22ORDER%20BY%20resolutiondate%20ASC"
 					+"&fields=key,resolutiondate,versions,created&startAt="+ i.toString() +
 					"&maxResults=" + j.toString();
-			JSONObject json = readJsonFromUrl(url);
+			JSONObject json = JSONManager.readJsonFromUrl(url);
 			JSONArray issues = json.getJSONArray("issues");
 			total  = json.getInt("total");
 			for(; i < total && i < j; i++) {
@@ -150,7 +77,9 @@ public class DataRetrieve {
 		}
 		
 		//generate CSV file
-		createCSV(counts);
+		DataManage dm = new DataManage("Falcon-Process control chart");
+		
+		dm.createCSV(counts);
 	} 
 	
 }
