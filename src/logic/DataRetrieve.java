@@ -3,7 +3,11 @@ package logic;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.SortedMap;
@@ -40,30 +44,49 @@ public class DataRetrieve {
 
 	public static void main(String[] args) throws GitAPIException, IOException, JSONException, ParseException {
 		
-		//remove
-		new GitBoundary("https://github.com/apache/falcon");
-		
-		String projectName = "FALCON";
+		String gitUrl = "https://github.com/apache/falcon";
+		GitBoundary gb = new GitBoundary(gitUrl);
+		String projectName = gitUrl.split("/")[gitUrl.split("/").length -1];
 		Integer j = 0;
 		Integer i = 0;
 		Integer total = 1;
 		TreeMap<String, Integer> counts = new TreeMap<>();
-		String date;
-		do {
-			
-			j = i + 1000;
+		String key;
+		List<LocalDateTime> allDates = new ArrayList<>();
+		LocalDateTime retDate;
+		
+		do {			
+			j = i+1000;
 			String url = "https://issues.apache.org/jira/rest/api/2/search?jql=project=%22"
-					+ projectName +"%22AND%22resolution%22=%22fixed%22ORDER%20BY%20resolutiondate%20ASC"
+					+ projectName.toUpperCase() +"%22AND%22resolution%22=%22fixed%22"
 					+"&fields=key,resolutiondate,versions,created&startAt="+ i.toString() +
 					"&maxResults=" + j.toString();
 			JSONObject json = JSONManager.readJsonFromUrl(url);
 			JSONArray issues = json.getJSONArray("issues");
 			total  = json.getInt("total");
+			
+			
+			
 			for(; i < total && i < j; i++) {
-				date = issues.getJSONObject(i%1000).getJSONObject("fields").get("resolutiondate").toString().substring(0, 7);
-				counts.compute(date, (key, oldValue) -> ((oldValue == null) ? 1 : oldValue+1));
+				key = issues.getJSONObject(i%1000).get("key").toString();				
+				retDate = gb.getDate(key.split("-")[1]);
+				
+				if(retDate != null)
+					allDates.add(retDate);
+	
 			}
 		} while (i < total);	
+		
+		//sort list
+		Collections.sort(allDates);
+		
+		//month count
+		String date;
+		for(i=0; i < allDates.size(); i++ ) {
+			date = allDates.get(i).getYear()+ "-" +String.format("%02d", allDates.get(i).getMonthValue());
+			counts.compute(date, (keys, oldValue) -> ((oldValue == null) ? 1 : oldValue+1));
+		}
+		
 		//fill list
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM");
 		Calendar c = Calendar.getInstance();
@@ -77,7 +100,7 @@ public class DataRetrieve {
 		}
 		
 		//generate CSV file
-		DataManage dm = new DataManage("Falcon-Process control chart");
+		DataManage dm = new DataManage(projectName +"-Process control chart");
 		
 		dm.createCSV(counts);
 	} 

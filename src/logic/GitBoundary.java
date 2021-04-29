@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,6 +37,8 @@ public class GitBoundary {
 				LOGGER.log(Level.WARNING, "Dir not created");
 			else 
 				LOGGER.log(Level.INFO, "Dir created");
+		}else {
+			LOGGER.log(Level.INFO, "Dir already exists");
 		}		
 		
 		//clone if working copy doesn't exist or pull it
@@ -41,6 +46,7 @@ public class GitBoundary {
 		
 		if(!this.workingCopy.exists()) {
 			//clone
+			LOGGER.log(Level.WARNING,"Cloning project please wait...");
 			Git.cloneRepository().setURI(gitUrl).setDirectory(this.workingCopy).call();
 			LOGGER.log(Level.INFO,"Project cloned");
 		}else
@@ -68,28 +74,35 @@ public class GitBoundary {
 	
 	public LocalDateTime getDate(String message) throws IOException{
 		//Get exact commit 
+		List <LocalDateTime> dateList = new ArrayList<>();
 		String option = "-"+ message +" ";		
 		
-		Process process = Runtime.getRuntime().exec(new String[] {"git", "log", "-1", "--pretty=format:%cd", "--date=iso", "--grep="+ option }, null, this.workingCopy);
+		Process process = Runtime.getRuntime().exec(new String[] {"git", "log", "--pretty=format:%cd", "--date=iso", "--grep="+ option }, null, this.workingCopy);
 		BufferedReader reader = new BufferedReader (new InputStreamReader (process.getInputStream()));
 		String line;
 		String date = null;
 		LocalDateTime dateTime;
+		LocalDateTime returnDate;
 		
 		while((line = reader.readLine()) != null) {
 			date = line;
-		}
-		
-		if( date != null) {
-			
+				
 			//get Date from full line
 			date = date.split(" ")[0];
-			
+				
 			LocalDate ld = LocalDate.parse(date);
 			dateTime = ld.atStartOfDay();
-		}else dateTime = null;
+			dateList.add(dateTime);
+			
+		}
 		
-		return dateTime;
+		if(dateList.isEmpty())
+			returnDate = null;
+		else returnDate = Collections.max(dateList);
+		
+		
+		return returnDate;
 	}
+	
 
 }

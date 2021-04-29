@@ -19,6 +19,7 @@ public class DataManage {
 	private static final Logger LOGGER = Logger.getLogger(DataManage.class.getName());
 	
 	public DataManage() {
+		//default with out fileName 
 		new DataManage("out");
 	}
 	
