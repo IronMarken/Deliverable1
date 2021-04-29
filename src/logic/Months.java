@@ -2,7 +2,7 @@ package logic;
 
 public enum Months {
 	
-    JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEPT, OCT, NOV, DEC;
+    JAN, FEB, MAR, APR, MAY, JUN, JUL, AUG, SEP, OCT, NOV, DEC;
 	
 	//Formatting output string
 	@Override
