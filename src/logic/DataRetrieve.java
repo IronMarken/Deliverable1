@@ -60,7 +60,7 @@ public class DataRetrieve {
 			String url = "https://issues.apache.org/jira/rest/api/2/search?jql=project=%22"
 					+ projectName.toUpperCase() +"%22AND%22resolution%22=%22fixed%22"
 					+"&fields=key,resolutiondate,versions,created&startAt="+ i.toString() +
-					"&maxResults=" + j.toString();
+					"&maxResults=1000";
 			JSONObject json = JSONManager.readJsonFromUrl(url);
 			JSONArray issues = json.getJSONArray("issues");
 			total  = json.getInt("total");
